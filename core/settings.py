@@ -126,7 +126,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Project-level static files
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collectstatic
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collectstatic
 
 
 # Default primary key field type
@@ -134,4 +134,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Directory for collectstat
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
