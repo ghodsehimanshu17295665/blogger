@@ -23,7 +23,7 @@ class Category(TimesStampedModel):
 class Post(TimesStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=255)
-    content = models.CharField(max_length=255)
+    content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, 
                                  related_name='posts', null=True)
     image = models.ImageField(upload_to='post_images/', null=True, blank=True)
