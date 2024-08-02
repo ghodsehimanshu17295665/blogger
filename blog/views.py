@@ -23,8 +23,8 @@ def create_post(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            # messages.add_message(request, messages.SUCCESS, 'Your Post has been created!!!')
             messages.info(request, "Your Post has been created!!!")
+            return redirect("create_post")
     else:
         form = PostForm()
     return render(request, "blog/create_post.html", {"form": form})
