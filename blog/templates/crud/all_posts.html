@@ -8,12 +8,7 @@
   <body>
     <div class="container">
       <h1>All Posts</h1>
-      <button class="btn btn-primary mb-3" onclick="window.location.href='{% url 'create_post' %}'">create</button>
-                  {% if messages %}
-                    {% for message in messages %}
-                        {{message}}
-                    {% endfor %}
-                  {% endif %} 
+      <button class="btn btn-primary mb-3" onclick="window.location.href='{% url 'create_post' %}'">create</button> 
       <table class="table">
         <thead>
           <tr>
@@ -33,15 +28,18 @@
               <td>{{ post.category }}</td>
               <td>
                 <a href="{% url 'update_post' post.id %}" class="btn btn-warning">Update</a>
+                {% comment %} <button class="btn btn-warning" type="submit">Update</button> {% endcomment %}
               </td> 
               <td>
                 <a href="{% url 'view_post' post.id %}" class="btn btn-primary">View</a>
+                {% comment %} <button class="btn btn-primary" type="submit">View</button> {% endcomment %}
               </td>
               <td>
                 <form method="post" action="{% url 'delete_post' post.id %}">
                   {% csrf_token %}
                   <button class="btn btn-danger" type="submit">Delete</button>
-                </form> 
+                </form>
+                {% comment %} <button class="btn btn-danger" type="submit">Delete</button> {% endcomment %}
               </td>
             </tr>
           {% endfor %}
@@ -50,6 +48,7 @@
     </div>
   </body>
 </html> 
+
 
 
 
