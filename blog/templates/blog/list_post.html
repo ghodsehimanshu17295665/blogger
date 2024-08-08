@@ -9,12 +9,6 @@
     <div class="container">
       <h1>Post List</h1>
       <button class="btn btn-primary mb-3" onclick="window.location.href='{% url 'create_post' %}'">Create Post</button><br>
-      {% if messages %}
-        {% for message in messages %}
-          {{ message }}
-        {% endfor %}
-      {% endif %}
-
       <table class="table">
         <thead>
           <tr>
@@ -33,10 +27,10 @@
               <td>{{ post.title }}</td>
               <td>{{ post.category }}</td>
               <td>
-                <a href="{% url 'update_post' post.id %}" class="btn btn-primary">Update</a>
+                <a href="{% url 'post_update' post.id %}" class="btn btn-primary">Update</a>
               </td>
               <td>
-                <a href="{% url 'read_post' post.id %}" class="btn btn-warning">View</a>
+                <a href="{% url 'view_post' post.id %}" class="btn btn-warning">View</a>
               </td>
               <td>
                 <form method="post" action="{% url 'delete_post' post.id %}">
