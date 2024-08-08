@@ -11,10 +11,10 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        {{ form.errors }}
+        {{ form.errors }} 
         <button type="submit" class="btn btn-primary">Update Post</button>
     </form>
-        <button onclick="window.location.href='{% url 'all_posts' %}'">Back</button><br>
+        <button onclick="window.location.href='{% url 'allposts' %}'">Back</button><br>
 
         {% if messages %}
           {% for message in messages %}
