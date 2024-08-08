@@ -1,15 +1,14 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import read_post
-from .views import (home, create_post, post_list,
-                    delete_post, update_post)
+from .views import Home, PostList, CreatePost, UpdatePost, ViewPost, DeletePost
 
 urlpatterns = [
-    path("", home),
-    path('post/list/', post_list, name='post_list'),
-    path('create/post/', create_post, name='create_post'),
-    path('delete/post/<uuid:pk>/', delete_post, name='delete_post'),
-    path('update/post/<uuid:pk>/', update_post, name='update_post'),
-    path('view/post/<uuid:pk>/', read_post, name='read_post'),
+    path('', Home.as_view(), name='home'),
+    path('post/list/', PostList.as_view(), name='post_list'),
+    path('create/post/', CreatePost.as_view(), name='create_post'),
+    path('post/update/<uuid:pk>/', UpdatePost.as_view(), name='post_update'),
+    path('post/view/<uuid:pk>/', ViewPost.as_view(), name='view_post'),
+    path('post/delete/<uuid:pk>/', DeletePost.as_view(), name='delete_post'),
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
