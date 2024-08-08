@@ -1,0 +1,82 @@
+{% comment %} <!DOCTYPE html>
+<html lang='en'>
+<head>
+    {% comment %} <style>
+        .info{
+            color:darkgreen;
+        }
+    </style> {% endcomment %}
+    {% comment %} <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+    .er{
+        color:red;
+    }
+    </style>
+</head>
+<body>
+<form action="" method="post" novalidate>
+  {% csrf_token %} {% endcomment %}
+  {% comment %} {{form.as_p}} {% endcomment %}
+  {% comment %} {% if form.non_field_errors %}
+   {% for error in form.non_field_errors %}
+    <p class="er">{{error}}</p>
+   {% endfor %}
+  {% endif %}
+  {% for form in form %}
+    {{form.label_tag}} {{form}} {{form.errors|striptags}} <br><br>
+  {% endfor %} 
+  <input type="submit" value="Login">
+</form>
+  <a href="{%url 'signup' %}">Signup</a> {% endcomment %}
+{% comment %} {% if messages %}
+    {% for message in messages %}
+        <span {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</span>
+    {% endfor %}
+{% endif %}{% endcomment %}
+{% comment %} </body> 
+</html> {% endcomment %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        .er {
+            color: red;
+        }
+        .success {
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class='er'>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {% for field in form %}
+            {{ field.label_tag }} {{ field }}
+            {% if field.errors %}
+                <div class='er'>
+                    {{ field.errors|striptags }}
+                </div>
+            {% endif %}
+            <br><br>
+        {% endfor %}
+        <input type="submit" value="Login"><br>
+        <a href="{% url 'signup' %}">Signup</a>
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
