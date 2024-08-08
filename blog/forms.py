@@ -1,5 +1,7 @@
 from django import forms
 from blog.models import Post
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class PostForm(forms.ModelForm):
@@ -7,22 +9,11 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ["title", "content", "category"]
 
-# class PostForm(forms.Form):
-#     title = forms.CharField(max_length=255)
-#     content = forms.CharField(max_length=255, widget=forms.Textarea)
-#     category = forms.ModelChoiceField(queryset=Category.objects.all(),
-#                                       label="Category")
 
+class SignUpForm(UserCreationForm):
+    password2 = forms.CharField(label='confirm Password (again)', widget=forms.PasswordInput)
 
-# creating a form
-# class PostForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         fields = ['title', 'content', 'category']
-
-# widgets = {
-#     'title': forms.TextInput(attrs={
-#         'class': 'form-control',
-#         'placeholder': 'Enter the title here',
-#     }),
-# }
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
+        labels = {'email': 'Email'}
