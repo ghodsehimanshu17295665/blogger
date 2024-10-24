@@ -1,7 +1,8 @@
 from django import forms
 from blog.models import Post
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 
 
 class PostForm(forms.ModelForm):
@@ -19,3 +20,16 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email']
         labels = {'email': 'Email'}
 
+
+class CustomUserCreationForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ("email",)
+
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = User
+        fields = ("email",)

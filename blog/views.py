@@ -7,7 +7,6 @@ from .forms import SignUpForm
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 
 
 class Home(TemplateView):
@@ -148,5 +147,5 @@ def user_logout(request):
     return HttpResponseRedirect('/login/')
 
 
- 
+
 

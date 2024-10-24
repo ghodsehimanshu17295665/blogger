@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+ 
+<html>
+    <body>
+        {% if messages %}
+            {% for message in messages   %}
+ 
+                <div style = "color: red;">{{message}}</div>
+ 
+            {% endfor %}
+            <br>
+            <br>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <h1> {{request.user.email}}</h1>
+        <br>
+ 
+            {% if request.user.is_student %}
+ 
+                You are a student ...
+ 
+            {% elif request.user.is_teacher %}
+ 
+                You are a teacher ...
+             
+            {% elif  request.user.is_principal %}
+ 
+                You are a principal ...
+             
+            {% else %}
+ 
+                You don't have any privilege ...
+ 
+            {% endif %}
+             
+        {% endif %}
+ 
+        <br>
+        <br>
+        <a href = "{% url  'user_urls:login-user' %}">Login </a>
+        <br>
+        <br>
+        <a href = "{% url  'user_urls:student-view' %}">Student View </a>
+        <br>
+        <br>
+        <a href = "{% url  'user_urls:teacher-view' %}">Teacher View</a>
+        <br>
+        <br>
+        <a href = "{% url  'user_urls:principal-view' %}">Principal View</a>
+        <br>
+        <br>
+ 
+    </body>
+</html>

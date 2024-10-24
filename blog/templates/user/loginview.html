@@ -1,0 +1,19 @@
+
+{% if messages %}
+ 
+    {% for message in messages %}
+ 
+        <div style = "color: red ;">{{message}}</div>
+        <br>
+ 
+    {% endfor %}
+ 
+{% endif %}
+ 
+<form method = "post">
+    {% csrf_token %}
+{{form.as_p}}
+<br>
+<br>
+<input type = "submit" value = "Login" />
+</form>
